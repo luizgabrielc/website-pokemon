@@ -21,6 +21,8 @@ function Search() {
     dispatch(getInitialPokemonData());
   }, [dispatch]);
 
+
+  //pokemons randomly
   useEffect(() => {
     if (allPokemon) {
       const clonedPokemons = [...allPokemon];
