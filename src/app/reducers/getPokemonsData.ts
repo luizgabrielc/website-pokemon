@@ -2,7 +2,7 @@
 
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-import { generatedPokemonType, genericPokemonType } from "../../utils/Types";
+import { generatedPokemonType, genericPokemonType } from "../../utils/types";
 import { pokemonTypes } from "../../utils/getPokemonTypes";
 import { defaultImages, images } from "../../utils/getPokemonImages";
 

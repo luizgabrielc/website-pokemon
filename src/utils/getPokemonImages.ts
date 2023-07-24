@@ -1,5 +1,4 @@
-
-//@ts-nocheck
+// @ts-nocheck
 const fetchImages = (context: string) => {
   const images = {};
   const cache = {};

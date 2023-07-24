@@ -1,11 +1,15 @@
 export interface AppTypeInitialState {
+  userInfo: undefined | { email: string };
   toasts: string[];
+  currentPokemonTab: string;
 }
 
-export interface PokemonTypeInitialState {
+export interface PokemonInitialStateType {
   allPokemon: undefined | genericPokemonType[];
-  randomPokemons: undefined | generatedPokemonType[];
+  randomPokemons: generatedPokemonType[] | undefined;
   compareQueue: generatedPokemonType[];
+  userPokemons: userPokemonsType[];
+  currentPokemon: undefined | currentPokemonType;
 }
 
 export interface genericPokemonType {
@@ -14,29 +18,45 @@ export interface genericPokemonType {
 }
 
 export interface generatedPokemonType {
-    name: string;
-    id: number;
-    image: string;
-    types: pokemonTypesInterface[];
-    
+  name: string;
+  id: number;
+  image: string;
+  types: pokemonTypeInterface[];
 }
 
-export interface pokemonTypesInterface{
-  [key:string] : {
+export interface userPokemonsType extends generatedPokemonType {
+  firebaseId?: string;
+}
+
+export interface currentPokemonType {
+  id: number;
+  name: string;
+  types: pokemonTypeInterface[];
+  image: string;
+  stats: pokemonStatsType[];
+  encounters: string[];
+  evolutionLevel: number;
+  evolution: { level: number; pokemon: { name: string; url: string } }[];
+  pokemonAbilities: { abilities: string[]; moves: string[] };
+}
+
+export interface pokemonStatsType {
+  name: string;
+  value: string;
+}
+
+export interface pokemonTypeInterface {
+  [key: string]: {
     image: string;
     resistance: string[];
     strength: string[];
     weakness: string[];
-    vulnerable:string[];
-  }
-}
-
-export interface userPokemonsTypes extends generatedPokemonType{
-  firebaseId?: string;
+    vulnerable: string[];
+  };
 }
 
 export type pokemonStatType =
   | "vulnerable"
   | "weakness"
   | "strength"
-  | "resistance"
+  | "resistance";
